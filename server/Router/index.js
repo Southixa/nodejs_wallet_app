@@ -29,7 +29,7 @@ router.put("/wallet/delete/:walletId", auth, WalletController.delete)
 router.post("/activity/insert", ActivityController.insert);
 router.get("/activity/getAll", auth, ActivityController.getAll)
 router.get("/activity/getOne/:actId", auth, ActivityController.getOne)
-router.get("/activity/getByUser/:userId", auth, ActivityController.getByUser)
+router.get("/activity/getByUser/:userId", ActivityController.getByUser)
 router.get("/activity/getByUserAndActType/:userId", auth, ActivityController.getByUserAndActType)
 router.put("/activity/update/:actId", auth, ActivityController.update)
 router.put("/activity/delete/:actId", auth, ActivityController.delete)
