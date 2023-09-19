@@ -26,7 +26,7 @@ router.put("/wallet/update/:walletId", auth, WalletController.update)
 router.put("/wallet/delete/:walletId", auth, WalletController.delete)
 
 //--------- activity ---------
-router.post("/activity/insert", auth, ActivityController.insert);
+router.post("/activity/insert", ActivityController.insert);
 router.get("/activity/getAll", auth, ActivityController.getAll)
 router.get("/activity/getOne/:actId", auth, ActivityController.getOne)
 router.get("/activity/getByUser/:userId", auth, ActivityController.getByUser)
