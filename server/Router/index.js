@@ -22,6 +22,7 @@ router.put("/user/updateProfileImageToServer/:userId", auth, UserController.upda
 router.post("/wallet/insert", auth, WalletController.insert)
 router.get("/wallet/getAll", auth, WalletController.getAll)
 router.get("/wallet/getOne/:walletId", auth, WalletController.getOne)
+router.get("/wallet/getByUser/:userId", auth, WalletController.getByUser)
 router.put("/wallet/update/:walletId", auth, WalletController.update)
 router.put("/wallet/delete/:walletId", auth, WalletController.delete)
 

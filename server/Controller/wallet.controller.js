@@ -1,6 +1,6 @@
 import Models from "../Model/index.model.js";
 import { EMessage, SMessage } from "../Service/message.js";
-import { SendError400, SendError403, SendError500, SendSuccess } from "../Service/response.js";
+import { SendError400, SendError403, SendError404, SendError500, SendSuccess } from "../Service/response.js";
 import { validateUpdateWallet, validateWallet } from "../Service/validate.js";
 
 export default class WalletController {
@@ -70,6 +70,23 @@ export default class WalletController {
                 return SendError400(res, EMessage.notFound + "wallet");
             }
             return SendSuccess(res, SMessage.getAll, wallet);
+        } catch (error) {
+            console.log(error);
+            return SendError500(res, "Error", error);
+        }
+    }
+
+    static async getByUser(req, res) {
+        try {
+            const userId = req.params.userId;
+            if(!mongoose.Types.ObjectId.isValid(userId)){
+                return SendError404(res, EMessage.notFound + " userId");
+            }
+            const wallet = await Models.Wallet.find({isActive: true, user_id: userId});
+            if(!wallet){
+                return SendError400(res, "not found wallet");
+            }
+            return SendSuccess(res, SMessage.getByUser, wallet);
         } catch (error) {
             console.log(error);
             return SendError500(res, "Error", error);
